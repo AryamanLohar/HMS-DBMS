@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block title %}
+Signup
+{% endblock title  %}
+
+{% block body %}
+
+<div class = "container mt-3">
+
+<div class="row">
+
+<div class = "col-md-4">
+
+</div>
+<div class = "col-md-4 h-100 p-5 bg-body-tertiary border rounded-3">
+
+  {% with messages=get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  
+  <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+      {{message}}
+  
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+  <form action = "/signup" method = "POST">
+    <div class="mb-3">
+      <h3 class = "text-center bg-primary text-white">Signup Here</h3>
+      <br>
+      <label for="username" class="form-label">Username</label>
+      <input type="email" class="form-control" id="username" name = "username" required>
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name = "email" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name = "password" required>
+    </div>
+    <button type="submit" class="btn btn-primary d-grid gap-2 col-6 mx-auto">Signup</button>
+  </form>
+  <br>
+  Already a user <a href = "/login">Login</a>
+</div>
+<div class = "col-md-4">
+
+</div>
+
+</div>
+
+</div>
+
+
+{% endblock body %}
